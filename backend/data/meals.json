@@ -128,5 +128,135 @@
     },
     "equipment": ["pot", "stovetop"],
     "description": "A simple, hearty soup that stretches inexpensive pantry ingredients."
+  },
+  {
+    "id": "baked-potato-with-beans",
+    "name": "Baked Potato with Beans",
+    "estimatedTotalCost": 5.5,
+    "estimatedCostPerServing": 1.38,
+    "servings": 4,
+    "activeCookTimeMinutes": 10,
+    "totalCookTimeMinutes": 50,
+    "difficulty": "easy",
+    "ingredients": {
+      "produce": ["green onion"],
+      "proteins": ["black beans"],
+      "carbs": ["potatoes"],
+      "condiments": ["hot sauce"],
+      "spices": ["black pepper"],
+      "other": ["oil"]
+    },
+    "tags": {
+      "dietary": ["vegetarian", "dairy-free"],
+      "constraints": ["very-cheap", "pantry-friendly"],
+      "mood": ["comforting", "hearty", "filling"],
+      "cuisine": ["global"]
+    },
+    "equipment": ["oven", "baking-sheet"],
+    "description": "A very low-cost, filling meal built from potatoes and beans."
+  },
+  {
+    "id": "tuna-pasta",
+    "name": "Tuna Pasta",
+    "estimatedTotalCost": 8.5,
+    "estimatedCostPerServing": 2.13,
+    "servings": 4,
+    "activeCookTimeMinutes": 15,
+    "totalCookTimeMinutes": 20,
+    "difficulty": "easy",
+    "ingredients": {
+      "produce": ["garlic"],
+      "proteins": ["tuna"],
+      "carbs": ["pasta"],
+      "condiments": ["mayonnaise"],
+      "spices": ["black pepper"],
+      "other": ["oil"]
+    },
+    "tags": {
+      "dietary": ["high-protein"],
+      "constraints": ["cheap", "quick", "pantry-friendly"],
+      "mood": ["savory", "filling"],
+      "cuisine": ["global"]
+    },
+    "equipment": ["pot", "stovetop"],
+    "description": "A quick, protein-rich pasta made from pantry staples."
+  },
+  {
+    "id": "vegetable-stir-fry",
+    "name": "Vegetable Stir Fry",
+    "estimatedTotalCost": 7.0,
+    "estimatedCostPerServing": 1.75,
+    "servings": 4,
+    "activeCookTimeMinutes": 20,
+    "totalCookTimeMinutes": 25,
+    "difficulty": "easy",
+    "ingredients": {
+      "produce": ["broccoli", "carrot", "bell pepper", "garlic"],
+      "proteins": [],
+      "carbs": ["rice"],
+      "condiments": ["soy sauce"],
+      "spices": ["black pepper"],
+      "other": ["oil"]
+    },
+    "tags": {
+      "dietary": ["vegan", "vegetarian", "dairy-free"],
+      "constraints": ["cheap", "quick"],
+      "mood": ["fresh", "light", "savory"],
+      "cuisine": ["asian-inspired"]
+    },
+    "equipment": ["pan", "stovetop"],
+    "description": "A fast, flexible vegetable dish served over rice."
+  },
+  {
+    "id": "oatmeal-peanut-butter-banana",
+    "name": "Oatmeal with Peanut Butter and Banana",
+    "estimatedTotalCost": 4.5,
+    "estimatedCostPerServing": 1.13,
+    "servings": 4,
+    "activeCookTimeMinutes": 5,
+    "totalCookTimeMinutes": 10,
+    "difficulty": "easy",
+    "ingredients": {
+      "produce": ["banana"],
+      "proteins": ["peanut butter"],
+      "carbs": ["oats"],
+      "condiments": [],
+      "spices": ["cinnamon"],
+      "other": ["milk"]
+    },
+    "tags": {
+      "dietary": ["vegetarian"],
+      "constraints": ["very-cheap", "quick", "pantry-friendly"],
+      "mood": ["comforting", "filling"],
+      "cuisine": ["global"]
+    },
+    "equipment": ["pot", "stovetop", "microwave"],
+    "description": "A cheap, fast meal that works for breakfast or a simple dinner."
+  },
+  {
+    "id": "pasta-with-garlic-and-chickpeas",
+    "name": "Pasta with Garlic and Chickpeas",
+    "estimatedTotalCost": 7.0,
+    "estimatedCostPerServing": 1.75,
+    "servings": 4,
+    "activeCookTimeMinutes": 15,
+    "totalCookTimeMinutes": 25,
+    "difficulty": "easy",
+    "ingredients": {
+      "produce": ["garlic"],
+      "proteins": ["chickpeas"],
+      "carbs": ["pasta"],
+      "condiments": [],
+      "spices": ["red pepper flakes", "black pepper"],
+      "other": ["olive oil"]
+    },
+    "tags": {
+      "dietary": ["vegan", "vegetarian", "dairy-free"],
+      "constraints": ["cheap", "pantry-friendly"],
+      "mood": ["savory", "filling"],
+      "cuisine": ["italian"]
+    },
+    "equipment": ["pot", "stovetop"],
+    "description": "A simple pasta dish with garlic, chickpeas, and pantry staples."
   }
 ]
