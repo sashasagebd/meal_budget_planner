@@ -73,14 +73,13 @@ export default function Home() {
 
     return(
         <div className="min-h-screen bg-[#778873]">
-            <img className="absolute top-0 right-0 m-2 h-10 w-10 cursor-pointer" src={CartIcon} onClick={() => {setOpenCartModal(true)}}/>
             <div className="h-1/8 bg-[#A1BC98] flex items-center">
                 <div className="p-1 m-2" >
                     <SearchBar sendFilters={sendFilters} sendSearch={getSearch}/>
                 </div>
+                <img className="absolute top-0 right-0 m-1 h-10 w-10 cursor-pointer" src={CartIcon} onClick={() => {setOpenCartModal(true)}}/>
             </div>
-            <div className="flex flex-col items-center gap-2">
-                <h3 className="mt-2">Recipes</h3>
+            <div className="flex flex-col items-center gap-2 mt-2 mb-3">
                 {
                 searchedRecipes.map(recipe => (
                     <div
@@ -93,12 +92,13 @@ export default function Home() {
                         >
                             Add to Cart
                         </button>
-                        <div onClick={() => {openRecipeModal(recipe)}} className="bg-[#D2DCB6] w-1/2 text-center p-2 border-4 border-[#F1F3E0]">
-                            <p>{recipe.name}</p>
+                        <div onClick={() => {openRecipeModal(recipe)}} className="bg-[#D2DCB6] w-1/2 text-center p-2 border-4 border-[#F1F3E0] flex-auto">
+                            <p><strong>{recipe.name}</strong></p>
                             <p>Cost (per serving): {recipe.estimatedCostPerServing}</p>
+                            <p>Servings: {recipe.servings}</p>
                             <p>Cook time: {recipe.totalCookTimeMinutes}</p>
                             <p>{recipe.description}</p>
-                            <p>Score For You: {recipe.score}</p>
+                            <p>Score For You: {Number(recipe.score) != 0 ? recipe.score : "N/A"}</p>
                         </div>
                     </div>
                 ))}
