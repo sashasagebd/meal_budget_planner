@@ -1,8 +1,7 @@
 package main
 
 import (
-	// "sort"
-	// "strings"
+	"sort"
 )
 
 
@@ -14,33 +13,77 @@ func recommendMeals(meals []Meal, filters Filters) []Meal {
 			continue
 		}
 
+		meal.Score = scoreMeal(meal, filters)
 		results = append(results, meal)
+	}
 
-		// results = append(results, RecResult{
-		// 	ID:												meal.ID,
-		// 	Name:											meal.Name,
-		// 	EstimatedCostPerServing:	meal.EstimatedCostPerServing,
-		// 	TotalCookTimeMinutes:			meal.TotalCookTimeMinutes,
-		// 	Ingredients:							meal.Ingredients,
-		// 	Tags:											meal.Tags,
-		// 	// Dietary:									meal.Tags.Dietary,
-		// 	// Constraints:							meal.Tags.Constraints,
-		// 	// Mood:											meal.Tags.Mood,
-		// 	// Cuisine:									meal.Tags.Cuisine,
-		// 	Description:							meal.Description,
-		// })
-
-		if len(results) > 5 {
-			results = results[:5]
+	sort.Slice(results, func(i, j int) bool {
+		if results[i].Score == results[j].Score {
+			return results[i].EstimatedCostPerServing < results[j].EstimatedCostPerServing
 		}
+		return results[i].Score > results[j].Score
+	})
 
+	if len(results) > 5 {
+		results = results[:5]
 	}
 
 	return results
 }
 
 
-// statement helpers
+// alg helpers
+func scoreMeal(meal Meal, filters Filters) int {
+	score := 0
+
+	// tag scoring -- constraints > mood > cuisine
+	score += 3 * countMatches(meal.Tags.Constraints, filters.Constraints)
+	score += 2 * countMatches(meal.Tags.Mood, filters.Mood)
+	score += 1 * countMatches(meal.Tags.Cuisine, filters.Cuisine)
+
+	// budget soft scoring
+	if filters.Budget > 0 {
+		if meal.EstimatedCostPerServing <= filters.Budget*0.6 {
+			score += 2
+		} else if meal.EstimatedCostPerServing <= filters.Budget*0.85 {
+			score += 1
+		}
+	}
+
+	// time constraint soft scoring
+	if filters.TimeConstraint > 0 {
+		if meal.TotalCookTimeMinutes <= int(float64(filters.TimeConstraint)*0.6) {
+			score += 2
+		} else if meal.TotalCookTimeMinutes <= int(float64(filters.TimeConstraint)*0.85) {
+			score += 1
+		}
+	}
+
+	return score
+}
+
+func countMatches(mealTags []string, requested []string) int {
+	count := 0
+	for _, req := range requested {
+		for _, tag := range mealTags {
+			if tag == req {
+				count++
+				break
+			}
+		}
+	}
+	return count
+}
+
+func min(a, b int) int {
+	if a < b {
+		return a
+	}
+	return b
+}
+
+
+// bool statement helper
 func passesEdgeCases(meal Meal, filters Filters) bool {
 	// return false for edge case failures
 	// budget edge case
