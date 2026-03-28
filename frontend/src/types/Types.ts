@@ -1,15 +1,24 @@
 export interface Recipe {
-    id: number;
-    search: string;
-    totalCost: string;
+    id: string;
+    name: string;
+    estimatedTotalCost: string;
     estimatedCostPerServing: number;
     servings: number;
     totalCookTimeMinutes: number;
     difficulty: string;
-    ingredients: string[];
+    ingredients: Ingredients;
     tags: Tag[];
     equipment: string[];
     description: string;
+}
+
+export interface Ingredients {
+  carbs?: string[];
+  condiments?: string[];
+  other?: string[];
+  produce?: string[];
+  proteins?: string[];
+  spices?: string[];
 }
 
 export interface Filters {

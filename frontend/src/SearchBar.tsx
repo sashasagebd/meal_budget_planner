@@ -4,9 +4,10 @@ import type { Filters, Tag } from './types/Types'
 
 interface SearchBarProps {
         sendFilters: (filters: Filters) => void;
+        sendSearch: (search: string) => void;
 }
 
-export default function SearchBar({ sendFilters }: SearchBarProps) {
+export default function SearchBar({ sendFilters, sendSearch }: SearchBarProps) {
     const [ search, setSearch ] = useState<string>('');
     const [ openFilters, setOpenFilters ] = useState<boolean>(false);
     const [ dietaryTags, setDietaryTags ] = useState<string[]>([]);
@@ -47,6 +48,7 @@ export default function SearchBar({ sendFilters }: SearchBarProps) {
 
     function handleSearch(event: React.ChangeEvent<HTMLInputElement>) {
         setSearch(event.target.value);
+        sendSearch(event.target.value);
     }
 
     function handleMaxCost(event: React.ChangeEvent<HTMLInputElement>) {
@@ -106,6 +108,7 @@ export default function SearchBar({ sendFilters }: SearchBarProps) {
 
     async function handleSubmit() {
         sendFilters({search: "", budget: maxCost, timeConstraint: maxTime, dietary: dietaryTags, constraints: constraintTags, mood: moodTags, cuisine: cuisineTags});
+        setOpenFilters(false);
     }
 
     return(
