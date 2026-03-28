@@ -158,8 +158,8 @@
   {
     "id": "tuna-pasta",
     "name": "Tuna Pasta",
-    "estimatedTotalCost": 8.5,
-    "estimatedCostPerServing": 2.13,
+    "estimatedTotalCost": 9.5,
+    "estimatedCostPerServing": 2.38,
     "servings": 4,
     "activeCookTimeMinutes": 15,
     "totalCookTimeMinutes": 20,
@@ -184,8 +184,8 @@
   {
     "id": "vegetable-stir-fry",
     "name": "Vegetable Stir Fry",
-    "estimatedTotalCost": 7.0,
-    "estimatedCostPerServing": 1.75,
+    "estimatedTotalCost": 7.5,
+    "estimatedCostPerServing": 1.88,
     "servings": 4,
     "activeCookTimeMinutes": 20,
     "totalCookTimeMinutes": 25,
@@ -258,5 +258,213 @@
     },
     "equipment": ["pot", "stovetop"],
     "description": "A simple pasta dish with garlic, chickpeas, and pantry staples."
+  },
+  {
+    "id": "sheet-pan-chicken-vegetables",
+    "name": "Sheet Pan Chicken and Vegetables",
+    "estimatedTotalCost": 11.0,
+    "estimatedCostPerServing": 2.75,
+    "servings": 4,
+    "activeCookTimeMinutes": 10,
+    "totalCookTimeMinutes": 40,
+    "difficulty": "easy",
+    "ingredients": {
+      "produce": ["broccoli", "carrot", "potato"],
+      "proteins": ["chicken"],
+      "carbs": [],
+      "condiments": [],
+      "spices": ["paprika", "black pepper"],
+      "other": ["oil"]
+    },
+    "tags": {
+      "dietary": ["high-protein"],
+      "constraints": ["low-effort"],
+      "mood": ["savory", "filling"],
+      "cuisine": ["american"]
+    },
+    "equipment": ["oven", "baking-sheet"],
+    "description": "A simple one-pan meal with roasted chicken and vegetables."
+  },
+  {
+    "id": "peanut-noodles",
+    "name": "Peanut Noodles",
+    "estimatedTotalCost": 7.5,
+    "estimatedCostPerServing": 3.25,
+    "servings": 2,
+    "activeCookTimeMinutes": 15,
+    "totalCookTimeMinutes": 20,
+    "difficulty": "easy",
+    "ingredients": {
+      "produce": ["green onion"],
+      "proteins": ["peanut butter"],
+      "carbs": ["noodles"],
+      "condiments": ["soy sauce"],
+      "spices": ["red pepper flakes"],
+      "other": ["oil"]
+    },
+    "tags": {
+      "dietary": ["vegetarian"],
+      "constraints": ["cheap", "quick"],
+      "mood": ["savory", "filling"],
+      "cuisine": ["asian-inspired"]
+    },
+    "equipment": ["pot", "stovetop"],
+    "description": "A quick, flavorful noodle dish with a peanut sauce."
+  },
+  {
+    "id": "egg-sandwich",
+    "name": "Egg Sandwich",
+    "estimatedTotalCost": 4.0,
+    "estimaredCostPerServing": 4.0,
+    "servings": 1,
+    "activeCookTimeMinutes": 10,
+    "totalCookTimeMinutes": 10,
+    "difficulty": "easy",
+    "ingredients": {
+      "produce": [],
+      "proteins": ["eggs"],
+      "carbs": ["bread"],
+      "condiments": ["mayonnaise"],
+      "spices": ["black pepper"],
+      "other": ["oil"]
+    },
+    "tags": {
+      "dietary": ["vegetarian"],
+      "constraints": ["very-cheap", "quick"],
+      "mood": ["comforting", "savory"],
+      "cuisine": ["american"]
+    },
+    "equipment": ["pan", "stovetop"],
+    "description": "A fast and cheap sandwich made with eggs and pantry staples."
+  },
+  {
+    "id": "greek-chickpea-salad",
+    "name": "Greek Chickpea Salad",
+    "estimatedTotalCost": 8.0,
+    "estimatedCostPerServing": 2.0,
+    "servings": 4,
+    "activeCookTimeMinutes": 10,
+    "totalCookTimeMinutes": 10,
+    "difficulty": "easy",
+    "ingredients": {
+      "produce": ["cucumber", "tomato"],
+      "proteins": ["chickpeas"],
+      "carbs": [],
+      "condiments": [],
+      "spices": ["oregano", "black pepper"],
+      "other": ["olive oil"]
+    },
+    "tags": {
+      "dietary": ["vegan", "vegetarian"],
+      "constraints": ["quick"],
+      "mood": ["fresh", "light"],
+      "cuisine": ["mediterranean"]
+    },
+    "equipment": [],
+    "description": "A fresh, no-cook meal with chickpeas and vegetables."
+  },
+  {
+    "id": "cheese-quesadilla",
+    "name": "Cheese Quesadilla",
+    "estimatedTotalCost": 4,
+    "estimatedCostPerServing": 4,
+    "servings": 1,
+    "activeCookTimeMinutes": 10,
+    "totalCookTimeMinutes": 15,
+    "difficulty": "easy",
+    "ingredients": {
+      "produce": [],
+      "proteins": ["cheese"],
+      "carbs": ["tortilla"],
+      "condiments": ["salsa"],
+      "spices": [],
+      "other": ["oil"]
+    },
+    "tags": {
+      "dietary": ["vegetarian"],
+      "constraints": ["cheap", "quick"],
+      "mood": ["comforting", "savory"],
+      "cuisine": ["mexican"]
+    },
+    "equipment": ["pan", "stovetop"],
+    "description": "A quick, melty meal using tortillas and cheese."
+  },
+  {
+    "id": "ramen-with-egg",
+    "name": "Ramen with Egg",
+    "estimatedTotalCost": 3.5,
+    "estimatedCostPerServing": 0.88,
+    "servings": 4,
+    "activeCookTimeMinutes": 10,
+    "totalCookTimeMinutes": 10,
+    "difficulty": "easy",
+    "ingredients": {
+      "produce": ["green onion"],
+      "proteins": ["eggs"],
+      "carbs": ["ramen noodles"],
+      "condiments": [],
+      "spices": [],
+      "other": ["broth"]
+    },
+    "tags": {
+      "dietary": ["vegetarian"],
+      "constraints": ["very-cheap", "quick", "pantry-friendly"],
+      "mood": ["comforting", "savory"],
+      "cuisine": ["asian-inspired"]
+    },
+    "equipment": ["pot", "stovetop"],
+    "description": "A very cheap, quick meal upgraded with an egg."
+  },
+  {
+    "id": "rice-and-beans",
+    "name": "Rice and Beans",
+    "estimatedTotalCost": 4.0,
+    "estimatedCostPerServing": 1.0,
+    "servings": 4,
+    "activeCookTimeMinutes": 10,
+    "totalCookTimeMinutes": 30,
+    "difficulty": "easy",
+    "ingredients": {
+      "produce": ["onion"],
+      "proteins": ["beans"],
+      "carbs": ["rice"],
+      "condiments": [],
+      "spices": ["cumin"],
+      "other": ["oil"]
+    },
+    "tags": {
+      "dietary": ["vegan", "vegetarian"],
+      "constraints": ["very-cheap", "pantry-friendly", "batch-friendly"],
+      "mood": ["filling", "hearty"],
+      "cuisine": ["global"]
+    },
+    "equipment": ["pot", "stovetop"],
+    "description": "A staple low-cost meal built from rice and beans."
+  },
+  {
+    "id": "yogurt-parfait",
+    "name": "Yogurt Parfait",
+    "estimatedTotalCost": 2.0,
+    "estimatedCostPerServing": 2.0,
+    "servings": 1,
+    "activeCookTimeMinutes": 5,
+    "totalCookTimeMinutes": 5,
+    "difficulty": "easy",
+    "ingredients": {
+      "produce": ["banana"],
+      "proteins": ["yogurt"],
+      "carbs": ["granola"],
+      "condiments": [],
+      "spices": [],
+      "other": []
+    },
+    "tags": {
+      "dietary": ["vegetarian"],
+      "constraints": ["quick"],
+      "mood": ["fresh", "light"],
+      "cuisine": ["global"]
+    },
+    "equipment": [],
+    "description": "A simple, no-cook meal with yogurt, fruit, and granola."
   }
 ]
