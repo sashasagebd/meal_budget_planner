@@ -10,6 +10,7 @@ export interface Recipe {
     tags: Tag[];
     equipment: string[];
     description: string;
+    score: string;
 }
 
 export interface Ingredients {

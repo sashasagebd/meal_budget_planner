@@ -1,1 +1,6 @@
 @import "tailwindcss";
+
+button:hover {
+    background-color: darkgray;
+    cursor: pointer;
+}

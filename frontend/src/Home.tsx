@@ -23,7 +23,6 @@ export default function Home() {
 
     useEffect(() => {
         if (!search.trim()) {
-            // no search → show all recipes
             setSearchedRecipes(recipes);
             return;
         }
@@ -73,8 +72,8 @@ export default function Home() {
     }
 
     return(
-        <div className="h-[vh-100] bg-[#778873]">
-            <img className="absolute top-0 right-0 m-2 h-10 w-10" src={CartIcon} onClick={() => {setOpenCartModal(true)}}/>
+        <div className="min-h-screen bg-[#778873]">
+            <img className="absolute top-0 right-0 m-2 h-10 w-10 cursor-pointer" src={CartIcon} onClick={() => {setOpenCartModal(true)}}/>
             <div className="h-1/8 bg-[#A1BC98] flex items-center">
                 <div className="p-1 m-2" >
                     <SearchBar sendFilters={sendFilters} sendSearch={getSearch}/>
@@ -99,6 +98,7 @@ export default function Home() {
                             <p>Cost (per serving): {recipe.estimatedCostPerServing}</p>
                             <p>Cook time: {recipe.totalCookTimeMinutes}</p>
                             <p>{recipe.description}</p>
+                            <p>Score For You: {recipe.score}</p>
                         </div>
                     </div>
                 ))}
@@ -140,11 +140,26 @@ export default function Home() {
             <Modal isOpen={openCartModal} onClose={() => setOpenCartModal(false)}>
                 {cart.map(item => (
                     <div>
-                        <h3>{item.name}</h3>
+                        <h3>{item.name} - {item.servings} servings</h3>
                         <p>${item.estimatedTotalCost}</p>
                     </div>
                 ))}
-                <h3>Total cost: ${cost}</h3>
+                <h3><strong>Total cost:</strong> ${cost}</h3>
+
+                <div className="mt-4">
+                    <h3 className="font-semibold">Ingredients Needed:</h3>
+                    <ul className="list-disc ml-5">
+                    {Array.from(new Set(
+                        cart.flatMap(recipe =>
+                        Object.values(recipe.ingredients).flat() // flatten each category array
+                        )
+                    )).map(ingredient => (
+                        <li key={ingredient}>{ingredient}</li>
+                    ))}
+                    </ul>
+                </div>
+
+                <button className="bg-[#A1BC98] px-2 py-1 rounded" onClick={() => {setCart([]); setCost(0)}}>Clear Cart</button>
             </Modal>
                 
         </div>
