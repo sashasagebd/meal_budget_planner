@@ -60,6 +60,12 @@ export default function SearchBar({ sendFilters, sendSearch }: SearchBarProps) {
     }
 
     function handleOpenFilters() {
+        setDietaryTags([]);
+        setConstraintTags([]);
+        setMoodTags([]);
+        setCuisineTags([]);
+        setMaxCost(null);
+        setMaxTime(null);
         setOpenFilters(true);
     }
 
@@ -121,19 +127,19 @@ export default function SearchBar({ sendFilters, sendSearch }: SearchBarProps) {
                     value={search}
                     onChange={handleSearch}
                 />
-                <svg viewBox="0,0 100,100" height="20" width="20" role="img" onClick={handleOpenFilters}>
+                <svg className="cursor-pointer" viewBox="0,0 100,100" height="20" width="20" role="img" onClick={handleOpenFilters}>
                     <circle cx="50" cy="15" r="10" />
                     <circle cx="50" cy="50" r="10" />
                     <circle cx="50" cy="85" r="10" />
                 </svg>
             </div>
             <Modal isOpen={openFilters} onClose={() => setOpenFilters(false)}>
-                <form className="flex flex-col gap-1">
-                    <p>Max Cost:</p>
-                    <input type="number" className="outline" onChange={handleMaxCost}/>
+                <form className="flex flex-col gap-2">
+                    <p>Max Cost Per Serving:</p>
+                    <input type="number" className="outline mb-2" onChange={handleMaxCost}/>
 
                     <p>Max Cook Time:</p>
-                    <input type="number" className="outline" onChange={handleMaxTime}/>
+                    <input type="number" className="outline mb-4" onChange={handleMaxTime}/>
 
                     <button type="button" className="outline" onClick={() => setShowDropdown(!showDropdown)}>
                         Add Tags
