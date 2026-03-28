@@ -2,10 +2,16 @@ import SearchBar from './SearchBar';
 import { useState, useEffect } from 'react';
 import type { Recipe, Filters } from'./types/Types';
 import Modal from './Modal';
+import CartIcon from './assets/online-shopping.png';
 
 export default function Home() {
     const [ recipes, setRecipes ] = useState<Recipe[]>([]);
+    const [ searchedRecipes, setSearchedRecipes ] = useState<Recipe[]>([]);
     const [ selectedRecipe, setSelectedRecipe ] = useState<Recipe | null>(null);
+    const [ search, setSearch ] = useState<string>('');
+    const [ cart, setCart ] = useState<Recipe[]>([]);
+    const [ openCartModal, setOpenCartModal ] = useState<boolean>(false);
+    const [ cost, setCost ] = useState<number>(0);
 
     useEffect(() => {
         console.log(recipes);
@@ -14,6 +20,20 @@ export default function Home() {
     useEffect(() => {
         sendFilters({search: '', budget: null, timeConstraint: null, dietary: Array(0), constraints: Array(0), mood: Array(0), cuisine: Array(0)});
     }, []);
+
+    useEffect(() => {
+        if (!search.trim()) {
+            // no search → show all recipes
+            setSearchedRecipes(recipes);
+            return;
+        }
+
+        const filtered = recipes.filter(recipe =>
+            recipe.name.toLowerCase().includes(search.toLowerCase())
+        );
+
+        setSearchedRecipes(filtered);
+    }, [search, recipes]);
 
     async function sendFilters(filters: Filters) {
         try {
@@ -43,41 +63,89 @@ export default function Home() {
         setSelectedRecipe(recipe);
     }
 
+    function getSearch(search: string) {
+        setSearch(search);
+    }
+
+    function addToCart(recipe: Recipe) {
+        setCart(prevCart => [...prevCart, recipe]);
+        setCost(cost + Number(recipe.estimatedTotalCost));
+    }
+
     return(
-        <div className="h-full bg-[#778873]">
-            <div className="h-1/12 bg-[#A1BC98] flex items-center">
+        <div className="h-[vh-100] bg-[#778873]">
+            <img className="absolute top-0 right-0 m-2 h-10 w-10" src={CartIcon} onClick={() => {setOpenCartModal(true)}}/>
+            <div className="h-1/8 bg-[#A1BC98] flex items-center">
                 <div className="p-1 m-2" >
-                    <SearchBar sendFilters={sendFilters}/>
+                    <SearchBar sendFilters={sendFilters} sendSearch={getSearch}/>
                 </div>
             </div>
             <div className="flex flex-col items-center gap-2">
                 <h3 className="mt-2">Recipes</h3>
                 {
-                recipes.map(recipe => (
-                    <div onClick={() => {openRecipeModal(recipe)}} className="bg-[#D2DCB6] w-1/2 text-center p-2 border-4 border-[#F1F3E0]">
-                        <p>{recipe.id}</p>
-                        <p>Cost (per serving): {recipe.estimatedCostPerServing}</p>
-                        <p>Cook time: {recipe.totalCookTimeMinutes}</p>
-                        <p>{recipe.description}</p>
+                searchedRecipes.map(recipe => (
+                    <div
+                        key={recipe.id}
+                        className="bg-[#D2DCB6] w-1/2 p-2 border-4 border-[#F1F3E0] flex items-center gap-4"
+                    >
+                        <button 
+                            onClick={() => addToCart(recipe)}
+                            className="bg-[#A1BC98] px-2 py-1 rounded"
+                        >
+                            Add to Cart
+                        </button>
+                        <div onClick={() => {openRecipeModal(recipe)}} className="bg-[#D2DCB6] w-1/2 text-center p-2 border-4 border-[#F1F3E0]">
+                            <p>{recipe.name}</p>
+                            <p>Cost (per serving): {recipe.estimatedCostPerServing}</p>
+                            <p>Cook time: {recipe.totalCookTimeMinutes}</p>
+                            <p>{recipe.description}</p>
+                        </div>
                     </div>
                 ))}
             </div>
 
             {selectedRecipe && (
                 <Modal isOpen={true} onClose={() => setSelectedRecipe(null)}>
-                    <div className="flex flex-col items-center">
-                        <h5>{selectedRecipe.id}</h5>
-                        <p>Ingredients:</p>
-                        {/*recipe.ingredients.map(ingredient => (
-                            <ingredient>
-                        ))*/}
-                        <p>Equipment:</p>
-                        {/*recipe.ingredients.map(ingredient => (
-                            <ingredient>
-                        ))*/}
+                    <div className="flex flex-col items-center gap-2">
+                        <h5 className="font-semibold capitalize">{selectedRecipe.name}</h5>
+                        <p><strong>Total Cost: </strong>${selectedRecipe.estimatedTotalCost}</p>
+                        <p><strong>Serving Cost: </strong>${selectedRecipe.estimatedCostPerServing}</p>
+                        <p></p>
+                        <div className="text-left"> 
+                            <h3 className="font-semibold capitalize">Ingredients:</h3>
+                            {Object.entries(selectedRecipe.ingredients).map(([category, items]) => (
+                                <div key={category} className="mb-3">
+                                    <p className="font-semibold capitalize text-left">
+                                    {category}
+                                    </p>
+
+                                    <ul className="list-disc ml-5 text-left">
+                                    {items?.map(item => (
+                                        <li key={item}>{item}</li>
+                                    ))}
+                                    </ul>
+                                </div>
+                            ))}
+                            <p className="font-semibold capitalize">Equipment:</p>
+                            <ul className="list-disc ml-5 text-left">
+                                {selectedRecipe.equipment.map(equip => (
+                                <li key={equip}>{equip}</li>
+                                ))}
+                            </ul>
+                        </div>
+                        <p>{selectedRecipe.description}</p>
                     </div>
                 </Modal>
             )}
+            <Modal isOpen={openCartModal} onClose={() => setOpenCartModal(false)}>
+                {cart.map(item => (
+                    <div>
+                        <h3>{item.name}</h3>
+                        <p>${item.estimatedTotalCost}</p>
+                    </div>
+                ))}
+                <h3>Total cost: ${cost}</h3>
+            </Modal>
                 
         </div>
     )
