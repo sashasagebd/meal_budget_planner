@@ -2,9 +2,9 @@ export interface Recipe {
     id: number;
     search: string;
     totalCost: string;
-    servingCost: number;
+    estimatedCostPerServing: number;
     servings: number;
-    totalCookTime: number;
+    totalCookTimeMinutes: number;
     difficulty: string;
     ingredients: string[];
     tags: Tag[];

@@ -1,36 +1,46 @@
 import SearchBar from './SearchBar';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import type { Recipe, Filters } from'./types/Types';
+import Modal from './Modal';
 
 export default function Home() {
     const [ recipes, setRecipes ] = useState<Recipe[]>([]);
+    const [ selectedRecipe, setSelectedRecipe ] = useState<Recipe | null>(null);
 
-    async function getRecipes() {
-        try {
-            /*const response = await fetch('http://localhost:5000/recommendations');
-            if(!response.ok) {
-                throw new Error(`Status: ${response.status}`);
-            }
-            const result = await response.json();
-            setRecipes(result);
-            */
-        } catch(err) {
-            console.error(err);
-        } 
-    }
+    useEffect(() => {
+        console.log(recipes);
+    }, [recipes]);
+
+    useEffect(() => {
+        sendFilters({search: '', budget: null, timeConstraint: null, dietary: Array(0), constraints: Array(0), mood: Array(0), cuisine: Array(0)});
+    }, []);
 
     async function sendFilters(filters: Filters) {
         try {
-            const response = await fetch("http://localhost:5000/recommendations", {
+            console.log(filters);
+            const response = await fetch("/recommendations", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify(filters),
             });
+
+            if(!response.ok) {
+                throw new Error(`Status: ${response.status}`);
+            }
+
+            const data = await response.json();
+            console.log(data);
+
+            setRecipes(data.results);
         } catch(err) {
             console.error(err);
         }
+    }
+
+    function openRecipeModal(recipe: Recipe) {
+        setSelectedRecipe(recipe);
     }
 
     return(
@@ -40,30 +50,34 @@ export default function Home() {
                     <SearchBar sendFilters={sendFilters}/>
                 </div>
             </div>
-            <div className="flex flex-col items-center">
+            <div className="flex flex-col items-center gap-2">
                 <h3 className="mt-2">Recipes</h3>
                 {
-                recipes.map(resipe => (
-                    <div className="bg-[#D2DCB6]">
+                recipes.map(recipe => (
+                    <div onClick={() => {openRecipeModal(recipe)}} className="bg-[#D2DCB6] w-1/2 text-center p-2 border-4 border-[#F1F3E0]">
+                        <p>{recipe.id}</p>
+                        <p>Cost (per serving): {recipe.estimatedCostPerServing}</p>
+                        <p>Cook time: {recipe.totalCookTimeMinutes}</p>
+                        <p>{recipe.description}</p>
                     </div>
                 ))}
-                <div className="bg-[#D2DCB6] w-1/2 text-center">
-                    <p>Name</p>
-                    <p>Cost (per serving):</p>
-                    <p>Cost (total):</p>
-                    <p>Difficulty</p>
-                    <p>Ingredients:</p>
-                    {/*recipe.ingredients.map(ingredient => (
-                        <ingredient>
-                    ))*/}
-                    <p>Equipment:</p>
-                    {/*recipe.ingredients.map(ingredient => (
-                        <ingredient>
-                    ))*/}
-                    <p>Description</p>
-
-                </div>
             </div>
+
+            {selectedRecipe && (
+                <Modal isOpen={true} onClose={() => setSelectedRecipe(null)}>
+                    <div className="flex flex-col items-center">
+                        <h5>{selectedRecipe.id}</h5>
+                        <p>Ingredients:</p>
+                        {/*recipe.ingredients.map(ingredient => (
+                            <ingredient>
+                        ))*/}
+                        <p>Equipment:</p>
+                        {/*recipe.ingredients.map(ingredient => (
+                            <ingredient>
+                        ))*/}
+                    </div>
+                </Modal>
+            )}
                 
         </div>
     )
