@@ -50,5 +50,83 @@
     },
     "equipment": ["pot", "stovetop"],
     "description": "A filling, low-cost meal made from pantry staples."
+  },
+  {
+    "id": "chickpea-curry",
+    "name": "Chickpea Curry",
+    "estimatedTotalCost": 7.5,
+    "estimatedCostPerServing": 1.88,
+    "servings": 4,
+    "activeCookTimeMinutes": 15,
+    "totalCookTimeMinutes": 35,
+    "difficulty": "easy",
+    "ingredients": {
+      "produce": ["onion", "garlic"],
+      "proteins": ["chickpeas"],
+      "carbs": ["rice"],
+      "condiments": [],
+      "spices": ["curry powder", "cumin", "black pepper"],
+      "other": ["coconut milk", "oil"]
+    },
+    "tags": {
+      "dietary": ["vegan", "vegetarian", "dairy-free"],
+      "constraints": ["cheap", "batch-friendly", "pantry-friendly"],
+      "mood": ["comforting", "savory", "filling"],
+      "cuisine": ["indian"]
+    },
+    "equipment": ["pot", "stovetop"],
+    "description": "A warm, low-cost curry made with chickpeas and pantry staples."
+  },
+  {
+    "id": "black-bean-burrito-bowl",
+    "name": "Black Bean Burrito Bowl",
+    "estimatedTotalCost": 8.0,
+    "estimatedCostPerServing": 2.0,
+    "servings": 4,
+    "activeCookTimeMinutes": 20,
+    "totalCookTimeMinutes": 30,
+    "difficulty": "easy",
+    "ingredients": {
+      "produce": ["onion", "bell pepper", "lime"],
+      "proteins": ["black beans"],
+      "carbs": ["rice"],
+      "condiments": ["salsa"],
+      "spices": ["cumin", "chili powder"],
+      "other": ["oil"]
+    },
+    "tags": {
+      "dietary": ["vegetarian", "dairy-free"],
+      "constraints": ["cheap", "batch-friendly"],
+      "mood": ["hearty", "filling", "fresh"],
+      "cuisine": ["mexican"]
+    },
+    "equipment": ["pot", "pan", "stovetop"],
+    "description": "A filling rice bowl with black beans and simple burrito flavors."
+  },
+  {
+    "id": "tomato-lentil-soup",
+    "name": "Tomato Lentil Soup",
+    "estimatedTotalCost": 6.5,
+    "estimatedCostPerServing": 1.63,
+    "servings": 4,
+    "activeCookTimeMinutes": 10,
+    "totalCookTimeMinutes": 40,
+    "difficulty": "easy",
+    "ingredients": {
+      "produce": ["onion", "carrot", "garlic"],
+      "proteins": ["lentils"],
+      "carbs": [],
+      "condiments": [],
+      "spices": ["oregano", "black pepper"],
+      "other": ["canned tomatoes", "vegetable broth", "oil"]
+    },
+    "tags": {
+      "dietary": ["vegan", "vegetarian", "dairy-free"],
+      "constraints": ["cheap", "batch-friendly", "pantry-friendly"],
+      "mood": ["comforting", "hearty"],
+      "cuisine": ["global"]
+    },
+    "equipment": ["pot", "stovetop"],
+    "description": "A simple, hearty soup that stretches inexpensive pantry ingredients."
   }
 ]

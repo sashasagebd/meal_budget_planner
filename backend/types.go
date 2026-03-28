@@ -13,7 +13,7 @@ type Filters struct {
 
 type Meal struct {
 	ID												string					`json:"id"`
-	Search										string					`json:"search"`
+	Name											string					`json:"name"`
 	EstimatedTotalCost				float64					`json:"estimatedTotalCost"`
 	EstimatedCostPerServing		float64					`json:"estimatedCostPerServing"`
 	Servings									int							`json:"servings"`
@@ -43,18 +43,20 @@ type MealTags struct {
 }
 
 
-type RecResult struct {
-	ID												string		`json:"id"`
-	Search										string		`json:"search"`
-	EstimatedCostPerServing		float64		`json:"estimatedCostPerServing"`
-	TotalCookTimeMinutes			int				`json:"totalCookTimeMinutes"`
-	Dietary										[]string	`json:"dietary"`
-	Constraints								[]string	`json:"constraints"`
-	Mood											[]string	`json:"mood"`
-	Cuisine										[]string	`json:"cuisine"`
-	Description								string		`json:"description"`
-}
+// type RecResult struct {
+// 	ID												string		`json:"id"`
+// 	Name											string		`json:"search"`
+// 	EstimatedCostPerServing		float64		`json:"estimatedCostPerServing"`
+// 	TotalCookTimeMinutes			int				`json:"totalCookTimeMinutes"`
+// 	Ingredients								MealIngredients	`json:"ingredients"`
+// 	Tags											MealTags	`json:"tags"`
+// 	// Dietary										[]string	`json:"dietary"`
+// 	// Constraints								[]string	`json:"constraints"`
+// 	// Mood											[]string	`json:"mood"`
+// 	// Cuisine										[]string	`json:"cuisine"`
+// 	Description								string		`json:"description"`
+// }
 
 type RecResponse struct {
-	Results		[]RecResult		`json:"results"`
+	Results		[]Meal		`json:"results"`
 }
