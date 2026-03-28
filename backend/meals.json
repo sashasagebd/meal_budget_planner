@@ -1,0 +1,54 @@
+[
+  {
+    "id": "egg-fried-rice",
+    "name": "Egg Fried Rice",
+    "estimatedTotalCost": 6.00,
+    "estimatedCostPerServing": 1.5,
+    "servings": 4,
+    "activeCookTimeMinutes": 15,
+    "totalCookTimeMinutes": 20,
+    "difficulty": "easy",
+    "ingredients": {
+      "produce": ["green onion", "garlic"],
+      "proteins": ["eggs"],
+      "carbs": ["rice"],
+      "condiments": ["soy sauce"],
+      "spices": ["black pepper"],
+      "other": ["oil"]
+    },
+    "tags": {
+      "dietary": ["vegetarian"],
+      "constraints": ["cheap", "quick", "pantry-friendly"],
+      "mood": ["savory", "filling"],
+      "cuisine": ["asian-inspired"]
+    },
+    "equipment": ["pan", "stovetop"],
+    "description": "A fast, cheap meal using leftover rice and pantry staples."
+  },
+  {
+    "id": "lentil-rice-bowl",
+    "name": "Lentil Rice Bowl",
+    "estimatedTotalCost": 8.00,
+    "estimatedCostPerServing": 2.0,
+    "servings": 4,
+    "activeCookTimeMinutes": 10,
+    "totalCookTimeMinutes": 40,
+    "difficulty": "easy",
+    "ingredients": {
+      "produce": ["onion", "carrot", "garlic"],
+      "proteins": ["lentils"],
+      "carbs": ["rice"],
+      "condiments": [],
+      "spices": ["cumin", "black pepper"],
+      "other": ["vegetable broth"]
+    },
+    "tags": {
+      "dietary": ["vegan", "vegetarian", "dairy-free"],
+      "constraints": ["cheap", "batch-friendly", "pantry-friendly"],
+      "mood": ["comforting", "hearty"],
+      "cuisine": []
+    },
+    "equipment": ["pot", "stovetop"],
+    "description": "A filling, low-cost meal made from pantry staples."
+  }
+]
