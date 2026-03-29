@@ -17,7 +17,7 @@ export default function SearchBar({ sendFilters, sendSearch }: SearchBarProps) {
     const [ maxCost, setMaxCost ] = useState<number | null>(null);
     const [ maxTime, setMaxTime ] = useState<number | null>(null);
 
-    const [allTags, setAllTags] = useState<Tag[]>([
+    const allTags: Tag[] = ([
         {type: "dietary", value: "vegetarian"},
         {type: "dietary", value: "vegan"},
         {type: "dietary", value: "dairy-free"},

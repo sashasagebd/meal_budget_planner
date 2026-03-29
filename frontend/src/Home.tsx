@@ -120,7 +120,7 @@ export default function Home() {
                                     </p>
 
                                     <ul className="list-disc ml-5 text-left">
-                                    {items?.map(item => (
+                                    {items?.map((item: string) => (
                                         <li key={item}>{item}</li>
                                     ))}
                                     </ul>
